@@ -56,10 +56,11 @@ public class ScientificCalculator {
 //        } else {
 //            System.out.println("Error: Cannot calculate square root of a negative number");
 //        }
-        if (num >= 0) {
+        if(num < 0 || Double.isNaN(num))  {
+            return Double.NaN;
+        }
+        else {
             return(Math.sqrt(num));
-        } else {
-            return Double.MIN_VALUE;
         }
 
     }
@@ -67,12 +68,15 @@ public class ScientificCalculator {
     public static double performFactorial(double num) {
 
 
-
-        if (num < 0) {
-            return(Double.MIN_VALUE);
+        long result = 1;
+        if(num < 0 || Double.isNaN(num)){
+            return Double.NaN;
+        }
+        if(num == 0){
+            result=1;
         }
 
-        long result = 1;
+
         for (int i = 1; i <= num; i++) {
             result *= i;
         }
@@ -82,17 +86,17 @@ public class ScientificCalculator {
 
     public static double performNaturalLogarithm(double num) {
 
-
-        if (num <= 0) {
-
-            return(Double.MIN_VALUE);
+        if(num < 0 || Double.isNaN(num)){
+            return Double.NaN;
         }
 
         return  Math.log(num);
     }
 
     public static double performPowerFunction(double base,double exponent) {
-
+        if(Double.isNaN(base) || Double.isNaN(exponent)){
+            return Double.NaN;
+        }
 
 
         return Math.pow(base, exponent);
